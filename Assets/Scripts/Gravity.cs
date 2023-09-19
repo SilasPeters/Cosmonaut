@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Submodules.Unity_Essentials.Static;
 
 public class Gravity : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class Gravity : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!Singleton<SpaceShip>.Instance.Launched) return;
+
 		foreach (Gravity gravityObject in _attractedObjects)
 		{
 			gravityObject.Attract(_rigidbody);
