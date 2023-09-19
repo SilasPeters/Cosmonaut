@@ -1,0 +1,3 @@
+[submodule "Assets/Unity-Essentials"]
+	path = Assets/Unity-Essentials
+	url = git@github.com:SilasPeters/Unity-Essentials.git
