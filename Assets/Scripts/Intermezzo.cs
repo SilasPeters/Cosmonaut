@@ -17,7 +17,6 @@ public class Intermezzo : Singleton<MonoBehaviour>
 	/// <inheritdoc />
 	protected override void Awake()
 	{
-		base.Awake();
 		IsPLaying = true;
 	}
 

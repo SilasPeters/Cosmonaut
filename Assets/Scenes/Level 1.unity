@@ -1061,16 +1061,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
-        type: 3}
-      propertyPath: intermezzo.Array.data[0]
-      value: Earth's fucked;Humanity's fucked
-      objectReference: {fileID: 0}
-    - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
-        type: 3}
-      propertyPath: intermezzo.Array.data[1]
-      value: Colonise mars
-      objectReference: {fileID: 0}
     - target: {fileID: 4666356768291847856, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
       propertyPath: m_Name
