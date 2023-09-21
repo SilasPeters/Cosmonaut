@@ -1,5 +1,6 @@
 using Unity_Essentials.Static;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceShip : Singleton<MonoBehaviour>
 {
@@ -37,6 +38,14 @@ public class SpaceShip : Singleton<MonoBehaviour>
             {
                 Launch();
                 Launched = true;
+            }
+        }
+        else // Spaceship is launched
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Intermezzo.SkipNextIntermezzo = true;
+                CustomSceneManager.ReloadScene();
             }
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity_Essentials.Static;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Unity_Essentials.Static.HighLevelFunctions;
 
@@ -14,6 +15,19 @@ public class Intermezzo : Singleton<MonoBehaviour>
 
 	public bool IsPLaying { get; private set; }
 
+	private static bool _skipNextIntermezzo;
+
+	public static bool SkipNextIntermezzo
+	{
+		get
+		{
+			var val = _skipNextIntermezzo;
+			_skipNextIntermezzo = false;
+			return val;
+		}
+		set => _skipNextIntermezzo = value;
+	}
+
 	/// <inheritdoc />
 	protected override void Awake()
 	{
@@ -22,6 +36,13 @@ public class Intermezzo : Singleton<MonoBehaviour>
 
 	private void Start()
 	{
+		if (SkipNextIntermezzo)
+		{
+			background.color = Color.clear;
+			IsPLaying        = false;
+			return;
+		}
+
 		StartCoroutine(PlayIntermezzo());
 	}
 
