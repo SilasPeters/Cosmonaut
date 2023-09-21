@@ -12,6 +12,7 @@ public class SpaceShip : Singleton<MonoBehaviour>
 
     protected override void Awake()
     {
+        base.Awake();
         _rigidbody = GetComponent<Rigidbody>();
         _pointer   = GameObject.Find("Pointer");
     }

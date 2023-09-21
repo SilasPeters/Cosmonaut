@@ -506,11 +506,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 205568318585521926, guid: 300f80108a63f48618cb4a1c8b8c1e86,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4878998461253096602, guid: 300f80108a63f48618cb4a1c8b8c1e86,
         type: 3}
       propertyPath: m_Enabled
@@ -1069,7 +1064,7 @@ PrefabInstance:
     - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
       propertyPath: intermezzo.Array.data[0]
-      value: Humanity's fucked;Earth's fucked
+      value: Earth's fucked;Humanity's fucked
       objectReference: {fileID: 0}
     - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
