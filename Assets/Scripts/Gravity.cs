@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Unity_Essentials.Static;
 using UnityEngine;
-using Submodules.Unity_Essentials.Static;
 
 public class Gravity : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Gravity : MonoBehaviour
 	/// <summary> All other objects that are currently in the sphere of influence of this object. </summary>
 	private readonly List<Gravity> _attractedObjects = new();
 
-	private void Start()
+	public virtual void Start()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 	}
@@ -34,9 +34,7 @@ public class Gravity : MonoBehaviour
 		if (!Singleton<SpaceShip>.Instance.Launched) return;
 
 		foreach (Gravity gravityObject in _attractedObjects)
-		{
 			gravityObject.Attract(_rigidbody);
-		}
 	}
 
 	private void Attract(Rigidbody attractedRigidbody)

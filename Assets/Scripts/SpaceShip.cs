@@ -1,5 +1,5 @@
+using Unity_Essentials.Static;
 using UnityEngine;
-using Submodules.Unity_Essentials.Static;
 
 public class SpaceShip : Singleton<MonoBehaviour>
 {
@@ -13,23 +13,31 @@ public class SpaceShip : Singleton<MonoBehaviour>
     protected override void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _pointer   = this.gameobject.children["Pointer"];
+        _pointer   = GameObject.Find("Pointer");
     }
 
     void Update()
     {
+        // Don't take input when the intermezzo is playing
+        if (Singleton<Intermezzo>.Instance.IsPLaying) return;
+
         if (!Launched)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow))
+            {
                 homePlanet.transform.Rotate(0, -1, 0);
-            if (Input.GetKey(KeyCode.DownArrow))
-                homePlanet.transform.Rotate(0, 1, 0);
-        }
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Launch();
-            Launched = true;
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                homePlanet.transform.Rotate(0, 1, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Launch();
+                Launched = true;
+            }
         }
     }
 
