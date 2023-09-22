@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class SpaceShip : Singleton<MonoBehaviour>
 {
-    public GameObject homePlanet;
     public float launchForce;
     public bool Launched { get; private set; }
 
     private Rigidbody _rigidbody;
     private GameObject _pointer;
+    private Transform _pivotTransform;
 
     protected override void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _pointer   = GameObject.Find("Pointer");
+        _pivotTransform = transform.parent.transform;
     }
 
     void Update()
@@ -25,12 +26,12 @@ public class SpaceShip : Singleton<MonoBehaviour>
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow))
             {
-                homePlanet.transform.Rotate(0, -1, 0);
+                _pivotTransform.Rotate(0, -1, 0);
             }
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow))
             {
-                homePlanet.transform.Rotate(0, 1, 0);
+                _pivotTransform.Rotate(0, 1, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
