@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000016430093, g: 0.0011897204, b: 0.0051016426, a: 1}
+  m_IndirectSpecularColor: {r: 0.000019642715, g: 0.001182247, b: 0.0051012128, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -233,6 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 561710764160446052, guid: 5f776740c447e45afb25edbca842de92, type: 3}
+    - {fileID: 7400510438367465617, guid: 5f776740c447e45afb25edbca842de92, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92,
@@ -448,10 +449,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1288793558353234, guid: 1818e1a170ef94c3aacee2ba50057521,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 740643141}
-    - targetCorrespondingSourceObject: {fileID: 1288793558353234, guid: 1818e1a170ef94c3aacee2ba50057521,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 740643148}
   m_SourcePrefab: {fileID: 100100000, guid: 1818e1a170ef94c3aacee2ba50057521, type: 3}
 --- !u!1001 &129087015
@@ -534,7 +531,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196241271}
   serializedVersion: 4
-  m_Mass: 3
+  m_Mass: 3.2
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1011,27 +1008,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 108156798}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &740643141
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740643140}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 6
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &740643142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1040,7 +1016,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740643140}
   serializedVersion: 4
-  m_Mass: 1.5
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}

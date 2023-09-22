@@ -1,6 +1,5 @@
 using Unity_Essentials.Static;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SpaceShip : Singleton<MonoBehaviour>
 {

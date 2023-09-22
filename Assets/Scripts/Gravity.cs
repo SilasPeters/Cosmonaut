@@ -4,36 +4,23 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-	private const float GravitationalConstant = 1;
+	private static float GravitationalConstant => Singleton<GameManager>.Instance.gravitationalConstant;
 
 	private Rigidbody _rigidbody;
-	/// <summary> All other objects that are currently in the sphere of influence of this object. </summary>
 	private readonly List<Gravity> _attractedObjects = new();
 
 	public virtual void Start()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		Gravity gravityObject = other.GetComponent<Gravity>();
-		if (gravityObject == null) return;
-		_attractedObjects.Add(gravityObject);
-	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		Gravity gravityObject = other.GetComponent<Gravity>();
-		if (gravityObject == null) return;
-		_attractedObjects.Remove(gravityObject);
+		_attractedObjects.AddRange(FindObjectsOfType<Gravity>());
+		_attractedObjects.Remove(GetComponent<Gravity>());
 	}
 
 	private void FixedUpdate()
 	{
 		if (!Singleton<SpaceShip>.Instance.Launched) return;
 
-		foreach (Gravity gravityObject in _attractedObjects)
+		foreach (var gravityObject in _attractedObjects)
 			gravityObject.Attract(_rigidbody);
 	}
 
