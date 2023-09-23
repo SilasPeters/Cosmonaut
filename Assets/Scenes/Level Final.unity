@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
       propertyPath: intermezzo.Array.data[1]
-      value: Instead working togerhet, humanity is falling apart
+      value: Instead working together, humanity is falling apart
       objectReference: {fileID: 0}
     - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}

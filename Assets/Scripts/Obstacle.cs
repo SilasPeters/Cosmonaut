@@ -1,23 +1,17 @@
-using System;
-using System.Linq;
+using System.Collections;
 using Unity_Essentials.Static;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Obstacle : Gravity
+public class Obstacle : MonoBehaviour
 {
 	public bool isDestination;
 
-	public override void Start()
+	private Image _deathScreen;
+
+	private void Start()
 	{
-		base.Start();
-
-		// Set the mass proportional to the diameter of the object
-		var sphereColliders = GetComponents<SphereCollider>();
-		var sphereCollider  = sphereColliders.First(x => !x.isTrigger);
-		var rigidbody       = GetComponent<Rigidbody>();
-		rigidbody.mass = sphereCollider.radius * transform.localScale.x * 2; // This assumes that the scale is universal to all dimensions
-
-		print($"Gameobject: {gameObject.name} has mass: {rigidbody.mass}");
+		_deathScreen = GameObject.Find("Death").GetComponent<Image>();
 	}
 
 	private void OnCollisionEnter(Collision other)
@@ -30,7 +24,17 @@ public class Obstacle : Gravity
 		}
 		else
 		{
-			throw new NotImplementedException("Player died");
+			StartCoroutine(PlayerDeath());
 		}
+	}
+
+	private IEnumerator PlayerDeath()
+	{
+		yield return HighLevelFunctions.Lerp(.3f, progress =>
+		{
+			_deathScreen.color = new Color(0, 0, 0, progress);
+		});
+		Intermezzo.SkipNextIntermezzo = true;
+		CustomSceneManager.ReloadScene();
 	}
 }

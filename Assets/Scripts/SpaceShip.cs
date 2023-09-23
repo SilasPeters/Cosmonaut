@@ -1,20 +1,33 @@
 using Unity_Essentials.Static;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpaceShip : Singleton<MonoBehaviour>
 {
     public float launchForce;
+    public float thrustSpeed;
+    public float amountOfFuel;
     public bool Launched { get; private set; }
+    public Image fuelIndicator;
 
+    private float _fuelUsed;
+    private Vector3 _originalIndicatorScale;
     private Rigidbody _rigidbody;
     private GameObject _pointer;
     private Transform _pivotTransform;
 
+    private ParticleSystem _thrusterLeft;
+    private ParticleSystem _thrusterRight;
+
     protected override void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _pointer   = GameObject.Find("Pointer");
-        _pivotTransform = transform.parent.transform;
+        _rigidbody              = GetComponent<Rigidbody>();
+        _pointer                = GameObject.Find("Pointer");
+        _pivotTransform         = transform.parent.transform;
+        _originalIndicatorScale = fuelIndicator.rectTransform.localScale;
+
+        _thrusterLeft = GameObject.Find("Thruster Left").GetComponent<ParticleSystem>();
+        _thrusterRight = GameObject.Find("Thruster Right").GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -47,6 +60,11 @@ public class SpaceShip : Singleton<MonoBehaviour>
                 Intermezzo.SkipNextIntermezzo = true;
                 CustomSceneManager.ReloadScene();
             }
+
+            if (Input.GetKey(KeyCode.LeftArrow) && _fuelUsed < amountOfFuel)
+                Thrust(KeyCode.LeftArrow);
+            if (Input.GetKey(KeyCode.RightArrow) && _fuelUsed < amountOfFuel)
+                Thrust(KeyCode.RightArrow);
         }
     }
 
@@ -54,5 +72,30 @@ public class SpaceShip : Singleton<MonoBehaviour>
     {
         _rigidbody.AddForce(transform.forward * launchForce, ForceMode.VelocityChange);
         _pointer.SetActive(false);
+    }
+
+    private void Thrust(KeyCode key)
+    {
+        Vector3 speed;
+        switch (key)
+        {
+            case KeyCode.LeftArrow:
+                speed = transform.right * -thrustSpeed;
+                _thrusterRight.Play();
+                break;
+            case KeyCode.RightArrow:
+                speed = transform.right * thrustSpeed;
+                _thrusterLeft.Play();
+                break;
+            default:
+                throw new System.NotImplementedException();
+        }
+
+        _rigidbody.AddForce(speed, ForceMode.Acceleration);
+        _fuelUsed += Time.deltaTime;
+        fuelIndicator.rectTransform.localScale = new Vector3(
+             ((amountOfFuel - _fuelUsed) / amountOfFuel),
+            _originalIndicatorScale.y,
+            _originalIndicatorScale.z);
     }
 }
