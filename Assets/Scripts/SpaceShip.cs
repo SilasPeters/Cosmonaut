@@ -18,6 +18,8 @@ public class SpaceShip : Singleton<MonoBehaviour>
 
     private ParticleSystem _thrusterLeft;
     private ParticleSystem _thrusterRight;
+    private AudioSource _thrustSfx;
+    private AudioSource _launchSfx;
 
     protected override void Awake()
     {
@@ -28,6 +30,9 @@ public class SpaceShip : Singleton<MonoBehaviour>
 
         _thrusterLeft = GameObject.Find("Thruster Left").GetComponent<ParticleSystem>();
         _thrusterRight = GameObject.Find("Thruster Right").GetComponent<ParticleSystem>();
+
+        _thrustSfx = GameObject.Find("ThrustSFX").GetComponent<AudioSource>();
+        _launchSfx = GameObject.Find("LaunchSFX").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -72,6 +77,7 @@ public class SpaceShip : Singleton<MonoBehaviour>
     {
         _rigidbody.AddForce(transform.forward * launchForce, ForceMode.VelocityChange);
         _pointer.SetActive(false);
+        _launchSfx.Play();
     }
 
     private void Thrust(KeyCode key)
@@ -97,5 +103,8 @@ public class SpaceShip : Singleton<MonoBehaviour>
              ((amountOfFuel - _fuelUsed) / amountOfFuel),
             _originalIndicatorScale.y,
             _originalIndicatorScale.z);
+
+        if (!_thrustSfx.isPlaying)
+            _thrustSfx.Play();
     }
 }

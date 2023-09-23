@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 4256831136501183921, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
       propertyPath: intermezzo.Array.data[2]
-      value: Humany is fucked;Forever.;
+      value: Humanity is fucked;Forever.
       objectReference: {fileID: 0}
     - target: {fileID: 4666356768291847856, guid: 92e3a6745d42659b2ab773e1e3531bf8,
         type: 3}
