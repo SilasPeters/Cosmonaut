@@ -88,11 +88,13 @@ public class SpaceShip : Singleton<MonoBehaviour>
         {
             case KeyCode.LeftArrow:
                 speed = transform.right * -thrustSpeed;
-                _thrusterRight.Play();
+                if (!_thrusterRight.isPlaying)
+                    _thrusterRight.Play();
                 break;
             case KeyCode.RightArrow:
                 speed = transform.right * thrustSpeed;
-                _thrusterLeft.Play();
+                if (!_thrusterLeft.isPlaying)
+                    _thrusterLeft.Play();
                 break;
             default:
                 throw new System.NotImplementedException();

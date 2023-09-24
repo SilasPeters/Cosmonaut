@@ -14,7 +14,6 @@ public class MusicPlayer : MonoBehaviour
 		}
 		_instance = this;
 
-		Debug.Log("This is the music player");
 		_audioSource = GetComponent<AudioSource>();
 		_audioSource.Play();
 		DontDestroyOnLoad(gameObject);
