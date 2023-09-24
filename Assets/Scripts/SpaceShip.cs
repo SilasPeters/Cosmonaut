@@ -7,6 +7,7 @@ public class SpaceShip : Singleton<MonoBehaviour>
     public float launchForce;
     public float thrustSpeed;
     public float amountOfFuel;
+    public float sensitivity;
     public bool Launched { get; private set; }
     public Image fuelIndicator;
 
@@ -44,12 +45,12 @@ public class SpaceShip : Singleton<MonoBehaviour>
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow))
             {
-                _pivotTransform.Rotate(0, -1, 0);
+                _pivotTransform.Rotate(0, -sensitivity, 0);
             }
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow))
             {
-                _pivotTransform.Rotate(0, 1, 0);
+                _pivotTransform.Rotate(0, sensitivity, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
