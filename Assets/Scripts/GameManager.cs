@@ -9,6 +9,6 @@ public class GameManager : Singleton<MonoBehaviour>
 	/// <inheritdoc />
 	protected override void Awake()
 	{
-
+		Cursor.visible = false;
 	}
 }

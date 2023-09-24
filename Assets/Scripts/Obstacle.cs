@@ -8,6 +8,11 @@ public class Obstacle : MonoBehaviour
 	public bool isDestination;
 
 	private Image _deathScreen;
+	/// <summary>
+	/// Prevents colission logic from being called multiple times when a ship bounces off and on a planet.
+	/// The ship should only collide once - logically speaking.
+	/// </summary>
+	private bool _shipCollided;
 
 	private void Start()
 	{
@@ -16,7 +21,8 @@ public class Obstacle : MonoBehaviour
 
 	private void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.name != "SpaceShip") return;
+		if (_shipCollided || other.gameObject.name != "SpaceShip") return;
+		_shipCollided = true; // Prevent this logic from being called multiple times
 
 		if (isDestination)
 		{
